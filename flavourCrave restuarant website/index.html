@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlavorCrave Restaurant</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Basic Styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        background-color: #222;
+        color: #fff;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .hero {
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 4rem 1rem;
+      }
+
+      .filters {
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .filters button {
+        margin: 0.3rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+
+      .filters .active {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        padding: 2rem;
+      }
+
+      .food-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 10px;
+      }
+
+      .food-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .btn {
+        background: #ff4d4d;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        text-decoration: none;
+        border-radius: 5px;
+        display: inline-block;
+      }
+
+      .about,
+      .contact,
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      #cart {
+        padding: 2rem;
+        background-color: #f9f9f9;
+      }
+
+      #cart ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      #cart ul li {
+        padding: 0.5rem;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">🍽️ FlavorCrave Restaurant</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <h1>Welcome to FlavorCrave Restaurant</h1>
+      <p>
+        Delicious food served with love and care. | Fresh ingredients | Tasty
+        meals
+      </p>
+      <a href="#menu" class="btn">Browse Menu</a>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="filters">
+      <button onclick="filterMenu('all')" class="active">All</button>
+      <button onclick="filterMenu('veg')">Veg</button>
+      <button onclick="filterMenu('nonveg')">Non-Veg</button>
+      <button onclick="filterMenu('pizza')">Pizza</button>
+      <button onclick="filterMenu('burger')">Burger</button>
+      <button onclick="filterMenu('pasta')">Pasta</button>
+      <button onclick="filterMenu('biryani')">Biryani</button>
+    </section>
+
+    <!-- Menu Grid -->
+    <section id="menu" class="menu-grid">
+      <div class="food-card veg pizza">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/047/734/497/non_2x/enjoy-the-delicious-flavors-of-a-vegetarian-pizza-with-fresh-tomatoes-onions-and-green-peas-on-a-crispy-crust-from-a-nearby-pizzeria-add-basil-herbs-parsley-and-spices-for-an-extra-kick-photo.jpg"
+          alt="Veg Pizza"
+        />
+        <h3>Veg Pizza 🌿</h3>
+        <p>₹150</p>
+        <button onclick="addToCart('Veg Pizza', 150)">Add to Cart</button>
+      </div>
+
+      <div class="food-card nonveg pizza">
+        <img
+          src="https://images.slurrp.com/prod/articles/a2633sov63v.webp"
+          alt="Chicken Pizza"
+        />
+        <h3>Chicken Pizza 🍗</h3>
+        <p>₹220</p>
+        <button onclick="addToCart('Chicken Pizza', 220)">Add to Cart</button>
+      </div>
+
+      <div class="food-card veg burger">
+        <img
+          src="https://mcdonaldsblog.in/wp-content/uploads/2016/06/mcspicy-paneer-1-1.jpg"
+          alt="Paneer Burger"
+        />
+        <h3>Paneer Burger 🌿</h3>
+        <p>₹130</p>
+        <button onclick="addToCart('Paneer Burger', 130)">Add to Cart</button>
+      </div>
+
+      <div class="food-card nonveg burger">
+        <img
+          src="https://assets.unileversolutions.com/recipes-v2/243652.jpg"
+          alt="Chicken Burger"
+        />
+        <h3>Chicken Burger 🍗</h3>
+        <p>₹180</p>
+        <button onclick="addToCart('Chicken Burger', 180)">Add to Cart</button>
+      </div>
+
+      <div class="food-card veg pasta">
+        <img
+          src="https://www.budgetbytes.com/wp-content/uploads/2021/10/One-Pot-Veggie-Pasta-bowl.jpg"
+          alt="Veg Pasta"
+        />
+        <h3>Veg Pasta 🌿</h3>
+        <p>₹140</p>
+        <button onclick="addToCart('Veg Pasta', 140)">Add to Cart</button>
+      </div>
+
+      <div class="food-card nonveg pasta">
+        <img
+          src="https://nourishedbynic.com/wp-content/uploads/2023/01/creamy-chicken-and-tomato-pasta.jpg"
+          alt="Chicken Pasta"
+        />
+        <h3>Chicken Pasta 🍗</h3>
+        <p>₹190</p>
+        <button onclick="addToCart('Chicken Pasta', 190)">Add to Cart</button>
+      </div>
+
+      <div class="food-card veg biryani">
+        <img
+          src="https://genv.org/wp-content/uploads/2023/02/17-Vegetable-Biryani.jpg"
+          alt="Veg Biryani"
+        />
+        <h3>Veg Biryani 🌿</h3>
+        <p>₹200</p>
+        <button onclick="addToCart('Veg Biryani', 200)">Add to Cart</button>
+      </div>
+
+      <div class="food-card nonveg biryani">
+        <img
+          src="http://www.thehealthsite.com/wp-content/uploads/2016/06/healthy-vegetarian-and-nonveg-biryani-recipes-THS.jpg"
+          alt="Chicken Biryani"
+        />
+        <h3>Chicken Biryani 🍗</h3>
+        <p>₹250</p>
+        <button onclick="addToCart('Chicken Biryani', 250)">Add to Cart</button>
+      </div>
+    </section>
+
+    <!-- Cart -->
+    <section id="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <p><strong>Total:</strong> ₹<span id="cart-total">0</span></p>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <h2>About Us</h2>
+      <p>Where taste meets tradition, and every bite feels like home.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <p>Email: FlavorCraveRestaurant@gmail.com</p>
+      <p>Phone: +91 123456789</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; All rights reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script>
+      function filterMenu(category) {
+        const items = document.querySelectorAll(".food-card");
+        const buttons = document.querySelectorAll(".filters button");
+
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
+
+        items.forEach((item) => {
+          if (category === "all") {
+            item.style.display = "block";
+          } else {
+            item.style.display = item.classList.contains(category)
+              ? "block"
+              : "none";
+          }
+        });
+      }
+
+      const cartItems = [];
+      function addToCart(itemName, price) {
+        cartItems.push({ name: itemName, price });
+        updateCart();
+      }
+
+      function updateCart() {
+        const cartList = document.getElementById("cart-items");
+        const cartTotal = document.getElementById("cart-total");
+        cartList.innerHTML = "";
+        let total = 0;
+        cartItems.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = `${item.name} - ₹${item.price}`;
+          cartList.appendChild(li);
+          total += item.price;
+        });
+        cartTotal.textContent = total;
+      }
+    </script>
+  </body>
+</html>
